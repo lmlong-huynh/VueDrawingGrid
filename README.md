@@ -10,9 +10,6 @@ A simple drawing grid using HTML5 canvas for <a href="https://vuejs.org/" target
 <a href="https://vuejs.org/" target="_blank">Vue.js</a> >= 3.0.0
 
 ## Installation
-
-Install my-project with npm
-
 ```bash
 npm i vue-drawing-grid
 ```
@@ -60,6 +57,10 @@ export default {
     gridSize: {
       type: Number,
       default: 1000,
+    },
+    gridColor: {
+      type: String,
+      default: '#d9d9d9',
     },
     cellSize: {
       type: Number,

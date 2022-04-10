@@ -26,6 +26,10 @@ export default defineComponent({
       type: Number,
       default: 1000,
     },
+    gridColor: {
+      type: String,
+      default: '#d9d9d9',
+    },
     cellSize: {
       type: Number,
       default: 20,
@@ -99,7 +103,7 @@ export default defineComponent({
         this.ctx.moveTo(x, 0);
         this.ctx.lineTo(x, height);
       }
-      this.ctx.strokeStyle = '#d9d9d9';
+      this.ctx.strokeStyle = this.gridColor;
       this.ctx.lineWidth = 1;
       this.ctx.stroke();
       this.ctx.beginPath();
