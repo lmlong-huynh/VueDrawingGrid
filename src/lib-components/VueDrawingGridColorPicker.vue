@@ -1,14 +1,35 @@
 <template>
-  <div class="drawing-grid-color-picker">
-    <button v-for="c in colors" :key="c.name" @click="$emit('color', c.value)">
-      <div class="dot" :style="`background:${c.value}`"></div>
+  <div class="vue-drawing-grid-color-picker">
+    <button
+      style="
+        width: 38px;
+        height: 38px;
+        border-radius: 100px;
+        padding: 0;
+        min-width: 0;
+      "
+      v-for="c in colors"
+      :key="c.name"
+      @click="$emit('color', c.value)"
+    >
+      <div
+        style="
+          height: 22px;
+          width: 22px;
+          border-radius: 50%;
+          display: inline-block;
+        "
+        :style="`background:${c.value}`"
+      ></div>
     </button>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'drawing-grid-color-picker',
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'VueDrawingGridColorPicker',
   props: {
     colors: {
       type: Array,
@@ -60,24 +81,8 @@ export default {
       ],
     },
   },
-};
+});
 </script>
 
-<style lang="scss" scoped>
-.drawing-grid-color-picker {
-  button {
-    width: 38px;
-    height: 38px;
-    border-radius: 100px;
-    padding: 0;
-    min-width: 0;
-
-    .dot {
-      height: 22px;
-      width: 22px;
-      border-radius: 50%;
-      display: inline-block;
-    }
-  }
-}
+<style scoped>
 </style>

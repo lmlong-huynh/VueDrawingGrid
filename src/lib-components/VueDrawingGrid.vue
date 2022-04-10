@@ -8,12 +8,15 @@
 </template>
 
 <script>
-export default {
-  name: 'drawing-grid',
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'VueDrawingGrid',
   props: {
     data: {
       type: Array,
       default: null,
+      // { "y-x": {y: string, x:string, size: number, color: string} }
     },
     mode: {
       type: String,
@@ -152,6 +155,6 @@ export default {
       });
     },
   },
-};
+});
 </script>
 <style scoped></style>
