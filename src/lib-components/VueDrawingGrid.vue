@@ -14,7 +14,7 @@ export default defineComponent({
   name: 'VueDrawingGrid',
   props: {
     data: {
-      type: Array,
+      type: Object,
       default: null,
       // { "y-x": {y: string, x:string, size: number, color: string} }
     },
