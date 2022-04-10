@@ -1,12 +1,11 @@
 # VueDrawingGrid
 A simple vue 3 drawing grid using HTML5 canvas
 
-
-
 ## Demo
 <p align="center">
   <img src="https://media.giphy.com/media/YOUNaY0g2Iy6bPbWJz/giphy.gif" alt="animated" />
 </p>
+
 ## Installation
 
 Install my-project with npm
@@ -18,17 +17,17 @@ npm i vue-drawing-grid
 ## Usage
 
 
-```
+```js
 import{ VueDrawingGrid } from 'vue-drawing-grid';
 ```
 
  If you want to pass a preloaded grid you can use the `data` prop. The model of the `data` prop is
- ```
+ ```js
  { "y-x": {y: string, x:string, size: number, color: string} }
  ```
 
 There is also a `VueDrawingGridColorPicker` component that can be imported, but is not neccessary.
-```
+```js
 import{ VueDrawingGrid,VueDrawingGridColorPicker } from 'vue-drawing-grid';
 export default {
   name: 'App',
@@ -45,7 +44,7 @@ export default {
 
 
  There are also a few other props that can be used in `VueDrawingGrid`
-```
+```js
     data: {
       type: Array,
       default: null,

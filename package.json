@@ -1,6 +1,6 @@
 {
   "name": "vue-drawing-grid",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A simple Vue 3 drawing grid using HTML5 canvas",
   "author": {
     "name": "Long Huynh",
