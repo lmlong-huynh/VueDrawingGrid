@@ -8,6 +8,7 @@
 
 <script>
 export default {
+  name: 'drawing-grid-color-picker',
   props: {
     colors: {
       type: Array,

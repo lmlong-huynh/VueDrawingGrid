@@ -1,6 +1,24 @@
 {
-  "name": "vuedrawinggrid",
+  "name": "vue-drawing-grid",
   "version": "0.1.0",
+  "description": "A simple Vue 3 drawing grid using HTML5 canvas",
+  "author": {
+    "name": "Long Huynh",
+    "url": "https://github.com/MLongz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MLongz/VueDrawingGrid"
+  },
+  "bugs": {
+    "url": "https://github.com/MLongz/VueDrawingGrid/issues"
+  },
+  "keywords": [
+    "vue",
+    "vue drawing grid",
+    "drawing grid",
+    "drawing"
+  ],
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
