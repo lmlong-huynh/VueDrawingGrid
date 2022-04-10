@@ -137,7 +137,7 @@ export default {
       }
     },
     fillGrid(cells) {
-      cells.forEach((p) => {
+      Object.values(cells).forEach((p) => {
         if (p.color == null) return;
         this.fillCell(p, p.color);
       });
