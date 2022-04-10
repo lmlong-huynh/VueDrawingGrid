@@ -13,7 +13,7 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'VueDrawingGrid',
   props: {
-    data: {
+    modelValue: {
       type: Object,
       default: null,
       // { "y-x": {y: string, x:string, size: number, color: string} }
@@ -43,9 +43,24 @@ export default defineComponent({
     return {
       canvas: null,
       ctx: null,
-      cells: {},
+      isBusy: false,
     };
   },
+  computed: {
+    cells: {
+      get() {
+        return this.modelValue;
+      },
+      set(newValue) {
+        console.log('cells', newValue);
+        this.$emit('update:modelValue', newValue);
+      },
+    },
+    hasError: function () {
+      return this.errors.length > 0;
+    },
+  },
+
   watch: {
     data: {
       deep: true,
@@ -60,17 +75,20 @@ export default defineComponent({
     this.generateGrid(this.gridSize, this.gridSize, this.cellSize);
     this.calculateGridSizes(this.gridSize, this.cellSize);
 
-    if (this.data != null) this.mergeData(this.data);
+    if (this.modelValue != null) this.mergeData(this.modelValue);
     this.fillGrid(this.cells);
   },
   methods: {
     onClick(event) {
+      if (this.isBusy) return;
+      this.isBusy = true;
       const rect = this.canvas.getBoundingClientRect();
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
       const cell = this.getCell(x, y);
       if (this.mode === 'Draw') this.fillCell(cell, this.color);
       else this.clearCell(cell);
+      this.isBusy = false;
     },
     clearCell(cell) {
       this.ctx.clearRect(
@@ -151,16 +169,13 @@ export default defineComponent({
     updateData(cell) {
       this.cells[this.getCellId(cell.x, cell.y)] = cell;
 
-      this.$emit('update', {
-        gridSize: this.gridSize,
-        cellSize: this.cellSize,
-        cells: this.cells,
-      });
+      this.$emit('update', this.cells);
+      this.$emit('update:modelValue', this.cells);
     },
-    mergeData(data){
-      if(data == null) return
-      this.cells = {...this.cells, ...data}
-    }
+    mergeData(data) {
+      if (data == null) return;
+      this.cells = { ...this.cells, ...data };
+    },
   },
 });
 </script>

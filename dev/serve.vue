@@ -8,7 +8,16 @@ export default defineComponent({
   data() {
     return {
       color: 'red',
+      data: { '0-0': { y: 0, x: 0, color: 'red', size: 20 } },
     };
+  },
+  watch: {
+    data:{
+     deep:true,
+     handler(newValue) {
+      console.log(newValue)
+    }
+    }
   },
 });
 </script>
@@ -16,7 +25,7 @@ export default defineComponent({
   <div class="app">
     <vue-drawing-grid
       :color="color"
-      :data="{ '0-0': { y: 0, x: 0, color: 'red', size: 20 } }"
+      v-model:modelValue="data"
     />
     <vue-drawing-grid-color-picker @color="color = $event" />
   </div>

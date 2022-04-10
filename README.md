@@ -25,7 +25,7 @@ npm i vue-drawing-grid
 import{ VueDrawingGrid } from 'vue-drawing-grid';
 ```
 
- If you want to pass a preloaded grid you can use the `data` prop. The model of the `data` prop is
+ If you want to pass a preloaded grid you can use the `modelValue` prop, or `v-model:modelValue` for two way binding. The model of the `modelValue` prop is
  ```js
  { "y-x": {y: string, x:string, size: number, color: string} }
  ```
@@ -49,7 +49,7 @@ export default {
 
  There are also a few other props that can be used in `VueDrawingGrid`
 ```js
-    data: {
+    modelValue: {
       type: Object,
       default: null,
       // { "y-x": {y: string, x:string, size: number, color: string} }
