@@ -36,7 +36,7 @@ export default {
     return {
       canvas: null,
       ctx: null,
-      cells: [],
+      cells: {},
     };
   },
   watch: {
@@ -107,12 +107,13 @@ export default {
       this.ctx.lineWidth = 1;
       this.ctx.stroke();
     },
+    getCellId(x, y) {
+      return `${Math.floor(y / this.cellSize)}-${Math.floor(
+        x / this.cellSize
+      )}`;
+    },
     getCell(x, y) {
-      return this.cells.find(
-        (cell) =>
-          cell.x === Math.floor(x / this.cellSize) &&
-          cell.y === Math.floor(y / this.cellSize)
-      );
+      return this.cells[this.getCellId(x, y)];
     },
     calculateGridSizes(gridSize, cellSize) {
       let xNodes, yNodes;
@@ -124,18 +125,14 @@ export default {
         yNodes = Math.floor(gridSize / cellSize);
       }
 
-      let index = 0;
       for (let y = 0; y < yNodes; y++) {
         for (let x = 0; x < xNodes; x++) {
-          this.cells[index] = {
-            id: `${y}-${x}`,
+          this.cells[`${y}-${x}`] = {
             y,
             x,
             size: cellSize,
             color: null,
           };
-
-          index++;
         }
       }
     },
@@ -146,9 +143,7 @@ export default {
       });
     },
     updateData(cell) {
-      const id = `${cell.y}-${cell.x}`;
-      const i = this.cells.findIndex((x) => x.id === id);
-      if (i !== -1) this.cells.splice(i, 0, cell);
+      this.cells[this.getCellId(cell.x, cell.y)] = cell
 
       this.$emit('update', {
         gridSize: this.gridSize,
