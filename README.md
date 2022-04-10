@@ -1,4 +1,8 @@
 # VueDrawingGrid
+<p align="center">
+  <img src="https://github.com/MLongz/VueDrawingGrid/blob/main/src/assets/logo.png" alt="animated" />
+</p>
+
 A simple drawing grid using HTML5 canvas for <a href="https://vuejs.org/" target="_blank">Vue.js</a>
 
 ## Demo
