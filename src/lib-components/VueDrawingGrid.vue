@@ -58,10 +58,9 @@ export default defineComponent({
   mounted() {
     this.generateCanvas();
     this.generateGrid(this.gridSize, this.gridSize, this.cellSize);
+    this.calculateGridSizes(this.gridSize, this.cellSize);
 
-    if (this.data == null)
-      this.calculateGridSizes(this.gridSize, this.cellSize);
-    else this.cells = this.data;
+    if (this.data != null) this.mergeData(this.data);
     this.fillGrid(this.cells);
   },
   methods: {
@@ -150,7 +149,7 @@ export default defineComponent({
       });
     },
     updateData(cell) {
-      this.cells[this.getCellId(cell.x, cell.y)] = cell
+      this.cells[this.getCellId(cell.x, cell.y)] = cell;
 
       this.$emit('update', {
         gridSize: this.gridSize,
@@ -158,6 +157,10 @@ export default defineComponent({
         cells: this.cells,
       });
     },
+    mergeData(data){
+      if(data == null) return
+      this.cells = {...this.cells, ...data}
+    }
   },
 });
 </script>

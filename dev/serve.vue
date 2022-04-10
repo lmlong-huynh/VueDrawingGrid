@@ -14,7 +14,10 @@ export default defineComponent({
 </script>
 <template>
   <div class="app">
-    <vue-drawing-grid :color="color" />
+    <vue-drawing-grid
+      :color="color"
+      :data="{ '0-0': { y: 0, x: 0, color: 'red', size: 20 } }"
+    />
     <vue-drawing-grid-color-picker @color="color = $event" />
   </div>
 </template>
